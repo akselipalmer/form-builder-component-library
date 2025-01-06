@@ -2,7 +2,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import {
   Select,
   SelectContent,
@@ -11,27 +17,29 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { PlusCircleIcon } from "lucide-react";
+import { field } from "types";
+import { Input } from "./ui/input";
 
 const FormSchema = z.object({
   type: z.string().nonempty(),
+  name: z.string().nonempty(),
 });
 
 type AddInputBarProps = {
-  setItems: React.Dispatch<
-    React.SetStateAction<
-      {
-        type: string;
-      }[]
-    >
-  >;
+  setItems: React.Dispatch<React.SetStateAction<field[]>>;
 };
 
 export default function AddInputBar({ setItems }: AddInputBarProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
+    defaultValues: {
+      type: "text",
+      name: "",
+    },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    form.reset();
     return setItems((items) => [...items, data]);
   }
 
@@ -43,13 +51,25 @@ export default function AddInputBar({ setItems }: AddInputBarProps) {
       >
         <FormField
           control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Name" {...field} className="rounded-full" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="type"
           render={({ field }) => (
             <FormItem>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger className="rounded-full min-w-32">
-                    <SelectValue placeholder="Input Type" />
+                    <SelectValue placeholder="Type" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -57,6 +77,7 @@ export default function AddInputBar({ setItems }: AddInputBarProps) {
                   <SelectItem value="number">Number</SelectItem>
                 </SelectContent>
               </Select>
+              <FormMessage />
             </FormItem>
           )}
         />

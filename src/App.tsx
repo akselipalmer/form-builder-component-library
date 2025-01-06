@@ -1,12 +1,16 @@
 import { useState } from "react";
 import AddInputBar from "./components/AddInputBar";
 
+import { field } from "../types";
+import DisplayItems from "./components/DisplayItems";
+
 function App() {
-  const [items, setItems] = useState<{ type: string }[]>([]);
-  console.log(items);
+  const [items, setItems] = useState<field[]>([]);
+
   return (
     <div className="dark h-screen flex flex-col items-center pt-5">
       <AddInputBar setItems={setItems} />
+      <DisplayItems items={items} />
     </div>
   );
 }
