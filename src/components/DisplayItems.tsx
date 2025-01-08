@@ -18,16 +18,13 @@ const getInputType = (zod: typeof z, type: fieldTypes) => {
 };
 
 export default function DisplayItems({ items }: DisplayItemsProps) {
-  const spreadObj = items.reduce((acc, item) => {
-    acc[item.name] = getInputType(z, item.type); // Adjust the schema type as needed
-    return acc;
-  }, {} as Record<string, z.ZodTypeAny>);
-
-  //   const formSchema = z.object(
-
-  //   );
-  console.log(spreadObj);
-
+  const formSchema = z.object(
+    items.reduce((acc, item) => {
+      acc[item.name] = getInputType(z, item.type); // Adjust the schema type as needed
+      return acc;
+    }, {} as Record<string, z.ZodTypeAny>)
+  );
+  console.log(formSchema);
   return (
     <div className="flex flex-col gap-2 mt-5 w-full max-w-md">
       {items.map((item, index) => (
