@@ -40,7 +40,7 @@ export default function AddInputBar({ setItems }: AddInputBarProps) {
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     form.reset();
-    return setItems((items) => [...items, data]);
+    return setItems((items) => [...items, data as field]);
   }
 
   return (

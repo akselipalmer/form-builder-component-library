@@ -1,5 +1,7 @@
+import { fieldTypes } from "./fieldTypes";
+
 type field = {
-  type: string;
+  type: fieldTypes;
   name: string;
 };
 
