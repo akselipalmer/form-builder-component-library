@@ -8,7 +8,7 @@ function App() {
   const [items, setItems] = useState<field[]>([]);
 
   return (
-    <div className="dark h-screen flex flex-col items-center pt-5">
+    <div className="dark h-screen flex flex-col items-center pt-5 px-3">
       <AddInputBar setItems={setItems} />
       <DisplayItems items={items} />
     </div>
