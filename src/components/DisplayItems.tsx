@@ -66,36 +66,40 @@ export default function DisplayItems({ items }: DisplayItemsProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-2 w-full max-w-3xl"
+        className="flex items-center w-full flex-col gap-4 max-w-3xl mt-5"
       >
-        {items.map((item, index) => (
-          <div
-            key={index}
-            className="flex gap-2 p-2 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 w-full"
-          >
-            <GripVertical />
-            <FormField
-              control={form.control}
-              name={item.name}
-              render={({ field }) => {
-                console.log(field.value);
-                return (
-                  <FormItem>
-                    <FormLabel>{item.name}</FormLabel>
-                    <FormControl>
-                      <Input {...field} type={item.type} />
-                    </FormControl>
-                    <FormDescription>
-                      Field description goes here
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                );
-              }}
-            />
-          </div>
-        ))}
-        <Button type="submit">Submit</Button>
+        <div className="flex flex-col p-2 gap-2 items-start rounded-xl shadow-md border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 w-full">
+          {items.map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-2 p-2   rounded-xl shadow-md border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 "
+            >
+              <GripVertical />
+              <FormField
+                control={form.control}
+                name={item.name}
+                render={({ field }) => {
+                  console.log(field.value);
+                  return (
+                    <FormItem>
+                      <FormLabel>{item.name}</FormLabel>
+                      <FormControl>
+                        <Input {...field} type={item.type} />
+                      </FormControl>
+                      <FormDescription>
+                        Field description goes here
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  );
+                }}
+              />
+            </div>
+          ))}
+        </div>
+        <Button type="submit" className="max-w-96 w-full rounded-full">
+          Submit
+        </Button>
       </form>
     </Form>
   );
