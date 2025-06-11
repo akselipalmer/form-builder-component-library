@@ -1,50 +1,110 @@
-# React + TypeScript + Vite
+# 🧾 Form Builder Component Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A customizable, reusable form builder built with **React** and **Firebase**. Designed to help developers and teams generate and manage dynamic forms without writing extra UI code.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🔧 Create and manage dynamic forms
+- 🎨 Built with modular React components
+- 🧩 Supports text fields, numbers, checkboxes, dropdowns, and more
+- 🔐 Firebase integration for auth, Firestore, and storage
+- 🗃️ Saves and retrieves form structures and responses
+- 👁️ Includes response viewer and editor
+- 🧑‍🤝‍🧑 Role-based permissions _(optional if supported)_
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 📸 Screenshots
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+<!-- Add images if available -->
+<!-- ![Form Builder Screenshot](./assets/screenshot1.png) -->
+<!-- ![Response Viewer Screenshot](./assets/screenshot2.png) -->
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/akselipalmer/form-builder.git
+cd form-builder
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm install
 ```
+
+### 3. Configure Firebase
+
+Create a `.env` file in the root of the project and add your Firebase config:
+
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+⚠️ Make sure you've set up Firestore and enabled Authentication (Email/Password or your preferred provider).
+
+### 4. Start the dev server
+
+```bash
+npm run dev
+```
+
+## 🛠 Tech Stack
+
+- ⚛️ React
+- 🔥 Firebase (Auth, Firestore, Storage)
+- 🌬 Tailwind CSS
+- 🪝 React Hook Form
+- 🗓 Day.js (for date handling, if used)
+
+## 📂 Project Structure
+
+```bash
+src/
+├── components/          # Reusable form components
+│   ├── inputs/          # Input elements like Text, Number, Select
+│   └── FormBuilder.jsx  # Main form builder logic
+├── pages/               # Page-level components
+├── utils/               # Utility functions
+├── hooks/               # Custom hooks
+└── App.jsx              # Root application component
+```
+
+## 🧠 Use Cases
+
+- Admin dashboards with customizable inputs
+- Internal tools and CRMs
+- Research/survey data collection
+- Fieldwork tools for museums or sustainability orgs
+- MVPs needing flexible form generation
+
+## ✅ Todo / Future Improvements
+
+- Add drag-and-drop UI builder
+- Add response export (CSV/JSON)
+- Add form sharing via public/private links
+- Add analytics or usage tracking
+
+## 📄 License
+
+This project is open source under the MIT License.
+
+## 🙋‍♂️ Author
+
+**Akseli Palmer**
+
+- 🌐 [LinkedIn](https://www.linkedin.com/in/akselipalmer/)
+- 💻 [GitHub](https://github.com/akselipalmer)
+
+I'm open to freelance, contract, and collaborative roles—especially with organizations doing impactful work. Feel free to connect!
